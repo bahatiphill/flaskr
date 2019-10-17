@@ -18,7 +18,7 @@ def register():
         error = None
         if not username:
             error =  'Username required'
-        elif not password
+        elif not password:
             error = 'Password required'
         elif db.execute(
             'SELECT id FROM user WHERE username = ?', (username, )
@@ -36,7 +36,7 @@ def register():
     return render_template('auth/register.html')
 
 
-@bp.route('/login', methods=)('GET', 'POST')
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -86,4 +86,4 @@ def login_required(view):
             return redirect(url_for('auth.login'))
         return view(**kwargs)
 
-        
+
